@@ -1,4 +1,4 @@
-class WorldRecipes::CLI
+class WorldCuisines::CLI
 
   def run
     make_countries
@@ -15,21 +15,21 @@ class WorldRecipes::CLI
   end
 
   def make_countries
-    countries_array ||= WorldRecipes::Scraper.scrape_countries
-    WorldRecipes::Country.new_from_collection(countries_array)
+    countries_array ||= WorldCuisines::Scraper.scrape_countries
+    WorldCuisines::Country.new_from_collection(countries_array)
   end
 
   def add_recipes_to_countries
-    WorldRecipes::Country.all.each do |country|
-      recipes ||= WorldRecipes::Scraper.scrape_recipes(country.url)
+    WorldCuisines::Country.all.each do |country|
+      recipes ||= WorldCuisines::Scraper.scrape_recipes(country.url)
       country.add_recipes(recipes)
     end
   end
 
   def add_attributes_to_recipes
-    WorldRecipes::Recipe.all.shift
-    WorldRecipes::Recipe.all.each do |recipe|
-      attributes = WorldRecipes::Scraper.scrape_recipe_page(recipe.url)
+    WorldCuisines::Recipe.all.shift
+    WorldCuisines::Recipe.all.each do |recipe|
+      attributes = WorldCuisines::Scraper.scrape_recipe_page(recipe.url)
       recipe.add_recipe_attributes(attributes)
     end
   end
@@ -37,7 +37,7 @@ class WorldRecipes::CLI
 
   def list_countries
      puts "Top World Recipes"
-     @countries = WorldRecipes::Country.all
+     @countries = WorldCuisines::Country.all
      @countries.each.with_index(1) do |country, i|
        puts "#{i}. #{country.name}"
     end

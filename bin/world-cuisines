@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/world_cuisines'
+WorldRecipes::CLI.new.run

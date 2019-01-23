@@ -1,6 +1,8 @@
-require "world_cuisines/version"
+require 'nokogiri'
+require 'open-uri'
 
-module WorldCuisines
-  class Error < StandardError; end
-  # Your code goes here...
-end
+require_relative "./world_cuisines/version"
+require_relative './world_recipes/cli'
+require_relative './world_recipes/country'
+require_relative './world_recipes/recipe'
+require_relative './world_recipes/scraper'

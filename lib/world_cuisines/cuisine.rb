@@ -1,6 +1,6 @@
 require 'pry'
-class WorldCuisines::Country
-  attr_accessor :name, :url, :recipes
+class WorldCuisines::Cuisine
+  attr_accessor :name, :url, :food_categories
   @@all = []
 
 
@@ -17,13 +17,13 @@ class WorldCuisines::Country
     @@all
   end
 
-def add_recipes(recipes_hash)
-  WorldCuisines::Recipe.new_from_collection(recipes_hash)
+def add_food_categories(food_categories_hash)
+  WorldCuisines::FoodCategory.new_from_collection(food_categories_hash)
 end
 
-  def list_recipes
-    @recipes.each.with_index(1) do |recipe, i|
-      puts "#{i}. #{category.name}"
+  def list_food_categories
+    @food_categories.each.with_index(1) do |food_category, i|
+      puts "#{i}. #{food_category.name}"
     end
   end
 end

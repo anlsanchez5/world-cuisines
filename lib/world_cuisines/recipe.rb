@@ -1,5 +1,5 @@
 class WorldCuisines::Recipe
-  attr_accessor :name, :url,:ingredients, :instructions
+  attr_accessor :name, :picture_url,:url, :number_servings, :cookig_time, :ingredients, :instructions
   @@all = []
 
   def self.all
@@ -11,8 +11,8 @@ class WorldCuisines::Recipe
     @@all << self
   end
 
-  def self.create_from_collection(recipes_array)
-    recipes.array.each {|recipe_hash| self.new(recipe_hash)}
+  def self.new_from_collection(recipes_array)
+    recipes_array.each {|recipe_hash| self.new(recipe_hash)}
   end
 
   def add_recipe_attributes(attributes_hash)
@@ -40,7 +40,10 @@ class WorldCuisines::Recipe
     puts ""
     puts <<-DOC.gsub /^\s*/, ''
       #{@name}
-      _______________
+      Link for Picture: #{@picture_url}
+      --------------------
+      #{@number_servings}| #{@cookig_time}
+      --------------------
     DOC
     puts ""
     puts "Ingredients"

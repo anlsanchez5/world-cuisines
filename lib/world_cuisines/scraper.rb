@@ -1,5 +1,5 @@
 require 'pry'
-class WorldRecipes::Scraper
+class WorldCuisines::Scraper
 
   def self.get_page
     Nokogiri::HTML(open("http://www.world-recipes.info/"))

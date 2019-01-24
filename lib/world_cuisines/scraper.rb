@@ -6,13 +6,13 @@ class WorldCuisines::Scraper
   end
 
   def self.scrape_page_index
-    get_cuisine_page.css("")
+    get_page.css("td.bdleft a.cntrylks")
   end
 
   def self.scrape_countries
     names = []
     scrape_page_index.each do |c|
-      names << c.css("").text
+      names << c.text
     end
     urls = []
     scrape_page_index.each do |c|
@@ -32,14 +32,14 @@ class WorldCuisines::Scraper
   end
 
   def self.scrape_recipes_index(link)
-    page_index ||= get_food_recipes_page(link).css("a.grid-col--subnav")
+    page_index ||= get_food_recipes_page(link).css("p a.cntrylksright")
     page_index
   end
 
   def self.scrape_recipes(link)
     names = []
     scrape_recipes_index(link).each do |r|
-      names << r.css("").text
+      names << r.text
     end
     urls = []
     scrape_recipes_index(link).each do |r|

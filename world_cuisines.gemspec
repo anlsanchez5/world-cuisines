@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["'Angelica Sanchez'"]
   spec.email         = ["'anlsanchez@ucdavis.edu'"]
 
-  spec.summary       = Top World Cuisine Recipes
-  spec.description   = Provide details on world cuisine recipes by country.
+  spec.summary       = "Top World Cuisine Recipes"
+  spec.description   = "Provide details on world cuisine recipes by country."
   spec.homepage      = 'http://rubygems.org/gems/world-cuisines'
   spec.license       = "MIT"
 

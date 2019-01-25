@@ -27,18 +27,18 @@ class WorldCuisines::Scraper
   end
 
   def self.get_food_category_page(link)
-    foodcategory_page ||= Nokogiri::HTML(open("#{link}"))
+    foodcategory_page ||= Nokogiri::HTML(open(link))
     foodcategory_page
   end
 
   def self.scrape_food_categories_index(link)
-    page_index ||= get_food_category_page(link).css("a.grid-col--sbnav")
+    page_index ||= self.get_food_category_page(link).css("a.grid-col--subnav")
     page_index
   end
 
   def self.scrape_food_categories(link)
     names = []
-    scrape_food_categories_index(link).each do |fc|
+    self.scrape_food_categories_index(link).each do |fc|
       names << fc.css("span.category-title").text
     end
     urls =[]
@@ -51,6 +51,7 @@ class WorldCuisines::Scraper
     u = 0
     urls.each {|url| food_categories[u][:url] = url; u += 1}
     food_categories
+    binding.pry
   end
 
   def self.get_recipes_page(link)

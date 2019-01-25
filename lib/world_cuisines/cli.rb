@@ -24,7 +24,8 @@ class WorldCuisines::CLI
 
   def add_food_categories_to_cuisines
     WorldCuisines::Cuisine.all.each do |cuisine|
-      food_categories ||= WorldCuisines::Scraper.scrape_food_categories(cuisine.url)
+      category_info ||= WorldCuisines::Scraper.scrape_food_categories(cuisine.url)
+      food_categories = WorldCuisines::FoodCategory.new_from_collection(category_info)
     end
   end
 

@@ -6,6 +6,7 @@ class WorldCuisines::Cuisine
 
   def initialize(cuisine_hash)
     cuisine_hash.each {|key, value| self.send(("#{key}="), value)}
+    @food_categories = []
     @@all << self
   end
 
@@ -17,8 +18,9 @@ class WorldCuisines::Cuisine
     @@all
   end
 
-def add_food_categories(food_categories_hash)
-  WorldCuisines::FoodCategory.new_from_collection(food_categories_hash)
+def add_food_categories(food_category)
+  @food_categories << food_category
+#  WorldCuisines::FoodCategory.new_from_collection(food_categories_hash)
 end
 
   def list_food_categories
